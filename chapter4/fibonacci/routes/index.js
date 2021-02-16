@@ -6,4 +6,13 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+// demonstrate error handler
+router.get('/error', function(req, res, next) {
+  next({
+    status: 404,
+    message: "Fake Error"
+  });
+});
+
+
 module.exports = router;

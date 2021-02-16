@@ -20,14 +20,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/users', usersRouter);  // mounts router object on /users so '/' refers to /users
 
 // catch 404 and forward to error handler
+// middleware raising error will have called next() with 1st parameter being the error
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
 // error handler
+// error handler signatures have error as 1st parameter
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;

@@ -1,3 +1,8 @@
+/**
+ * To use app:
+ * terminal 1 : npm run startrest
+ * terminal 2 : npm run server
+ */
 var createError = require('http-errors');
 var express = require('express');
 const hbs = require('hbs');
@@ -6,7 +11,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-const fibonacciRouter = require('./routes/fibonacci');
+//const fibonacciRouter = require('./routes/fibonacci');
+const fibonacciRouter = require('./routes/fibonacci-rest');
 
 var app = express();
 

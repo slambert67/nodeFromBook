@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "start": "cross-env DEBUG=fibonacci:* node ./bin/www",
-    "server": "cross-env SERVERPORT=3002 node ./fiboserver",
-    "client": "cross-env SERVERPORT=3002 node ./fiboclient"
+    "startrest": "cross-env DEBUG=fibonacci:* SERVERPORT=3002 node ./fiboserver",
+    "server": "cross-env DEBUG=fibonacci:* SERVERPORT=3002 node  ./bin/www" ,
+    "client": "cross-env DEBUG=fibonacci:* SERVERPORT=3002 node ./fiboclient"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

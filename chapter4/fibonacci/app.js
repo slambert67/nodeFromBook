@@ -1,7 +1,13 @@
 /**
  * To use app:
- * terminal 1 : npm run startrest
- * terminal 2 : npm run server
+ * terminal 1 : npm run startrest : "cross-env DEBUG=fibonacci:* SERVERPORT=3002 node ./fiboserver"
+ * 
+ * 
+ * terminal 2 : npm run server    : "cross-env DEBUG=fibonacci:* SERVERPORT=3002 node  ./bin/www"
+ * - runs this app
+ * - uses fibonacciRouter : ./routes/fibonacci-rest'
+ * - /fibonacci -> fibonacciRouter
+ * - - creates http request to call fiboserver above
  */
 var createError = require('http-errors');
 var express = require('express');

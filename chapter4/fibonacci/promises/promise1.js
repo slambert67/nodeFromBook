@@ -41,19 +41,18 @@ rp('http://localhost:3002/fibonacci/10')
 
 ////////////////////////////////////////////////////////////////////////////////
 // The Promise constructor is primarily used to wrap functions that do not already support promises.
+/*
 console.log('PROMISE CONSTRUCTOR - Start');
 
 function myNonPromiseAsyncFunc() {
 
     return new Promise( (resolutionFunc, rejectionFunc) => {  
-        /**
-         * function passed to this constructor called executor function
-         * 2 parameters are passed by js runtime, resolutionFunc and rejectionFunc
-         * resolutionFunc (the actual promise resolve function?) is called when the asynchronous task completes successfully and returns the results of the task as a value
-         * rejectionFunc (the actual promise reject function?) is called when the task fails, and returns the reason for failure, which is typically an error object.
-         * 
-         */
-     
+
+         // function passed to this constructor called executor function
+         // 2 parameters are passed by js runtime, resolutionFunc and rejectionFunc
+         // resolutionFunc (the actual promise resolve function?) is called when the asynchronous task completes successfully and returns the results of the task as a value
+         // rejectionFunc (the actual promise reject function?) is called when the task fails, and returns the reason for failure, which is typically an error object.
+    
         // do something asynchronous that will eventually call resolutionFunc or  rejectionFunc
         [
             "/fibonacci/10"
@@ -92,4 +91,66 @@ myNonPromiseAsyncFunc()
         console.log('myNonAsyncFunc failed'); 
         console.log('PROMISE CONSTRUCTOR - End');     
     });
+*/
+////////////////////////////////////////////////////////////////////////////////
 
+
+////////////////////////////////////////////////////////////////////////////////
+/**
+ * Promise states
+ * - pending then fulfilled or rejected
+ * - when no longer pending => settled - final and permanent state
+ * May reattempt so a promise is a placeholder for the result of one attempt of an operation
+ * 
+ * reject() transitions promise to rejected
+ * resolve() transitions promise to fulfilled (instead of resolved)
+ * resolve(value) => fulfilled
+ * resolve(anotherPromise) => fulfilled if anotherPromise is fulfilled
+ * resolve(anotherPromise) => rejected if anotherPromise is rejected
+ */
+////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////
+/**
+ * Convenience functions
+ * - Promise.reject('short rejection)
+ * Useful when data already available to resolve or reject promise
+ */
+////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////
+// CHAINING PROMISES
+// Each call to then returns a new promise
+// callbacks executed asynchronously
+
+/*
+console.log('Start of promise chain');
+Promise.resolve('step1 resolved')
+.then( (res) => {
+    console.log(res);
+    return 'Greetings from step 2';  // explicit return value. Resolves the promise returned by then
+})
+.then( (res) => {
+    console.log(res);   
+    console.log('Greetings from step 3');  // No explicit return value. undefined fulfills the promise returned by then
+})
+.then( (res) => {
+    console.log(res);   
+    return Promise.resolve('fulfilled value');  // Return a promise
+})
+.then( (res) => {
+    console.log(res);   
+    return Promise.reject('unfulfilled value');  // Return a promise
+})
+.then( (res) => {
+    return Promise.resolve('fulfilled value again - but do not get here');  // Return a promise
+})
+.catch( (e) => {
+    console.log('in catch'); 
+    console.log(e);
+});
+console.log('End of promise chain');
+*/
+////////////////////////////////////////////////////////////////////////////////

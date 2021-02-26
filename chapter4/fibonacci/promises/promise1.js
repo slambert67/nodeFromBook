@@ -154,3 +154,24 @@ Promise.resolve('step1 resolved')
 console.log('End of promise chain');
 */
 ////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////
+// ERROR HANDLING
+// Any error that occurs in a function that returns a promise should be used to reject the promise instead of being thrown back to the caller!
+// Can have multiple catches in promise chain (e.g. for logging) but the promise returned is not rejected! Must rethrow the error to propagate
+
+// reject with reject
+var rejectedPromise = new Promise( function(resolve,reject){
+    reject( new Error('Arghh!') );  // explicit rejection
+})
+.then( (res) => {console.log('do not get here')} )
+.catch( (e) => {console.log('rejected explicitly'); });
+
+// can also reject by throwing an error
+var rejectedPromise2 = new Promise( function(resolve,reject){
+    throw new Error('Arghh2!');  // implicit rejection
+})
+.then( (res) => {console.log('do not get here')} )
+.catch( (e) => {console.log('rejected implicitly'); });
+////////////////////////////////////////////////////////////////////////////////
